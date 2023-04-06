@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Article, Articles } from './models/article';
+import { Article, Articles,  Sources } from './models/article';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,9 @@ export class ArticleService {
 
   getTopArticles(): Observable<Articles>{
     return this.http.get<Articles>(this.base_url + 'top-headlines?country=us&' + this.api_key);
+  }
+  getAllSources(): Observable<Sources>{
+    return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key);
   }
 
   getArticleByKeyword(keyword:string): Observable<Article>{

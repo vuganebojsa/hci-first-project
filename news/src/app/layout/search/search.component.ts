@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ArticleService } from 'src/app/article.service';
+import { Source, Sources } from 'src/app/models/article';
 
 @Component({
   selector: 'app-search',
@@ -19,8 +21,23 @@ export class SearchComponent {
   keyword: string = '';
   startDate: string = '';
   endDate: string = '';
-
+  sources: Source[];
+  sourcesWithStatus: Sources;
+  constructor(private articleService:ArticleService){
+  }
   ngOnInit(): void {
+    this.articleService.getAllSources().subscribe({
+      next:(result) =>{
+        console.log(result);
+        this.sourcesWithStatus = result;
+        this.sources = this.sourcesWithStatus.sources
+        console.log(this.sources)
+        
+      },
+      error:(error) =>{
+        console.log(error);
+      }
+    })
     //Vrati sve opcije moguce
   }
 

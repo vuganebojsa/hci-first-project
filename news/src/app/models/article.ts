@@ -21,3 +21,7 @@ export interface Source{
     id?:number,
     name?:string
 }
+export interface Sources{
+    status: string,
+    sources:Source[]
+}

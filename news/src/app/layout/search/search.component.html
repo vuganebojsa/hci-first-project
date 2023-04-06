@@ -4,8 +4,10 @@
              (ngSubmit)="search()">
         <div class="row">
             <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
-                <input [(ngModel)]="source" type="text" name="source" placeholder="source" >
-                
+                <input [(ngModel)]="source" type="text" name="source"list="sourceName" placeholder="source" >
+                <datalist id="sourceName" >
+                    <option *ngFor="let source of sources" value="{{source.name}}">{{source.name}}</option>
+                </datalist>
             </div>
             
             <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
