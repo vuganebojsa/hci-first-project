@@ -37,7 +37,7 @@ import { ArticleComponent } from './layout/article/article.component';
     ReactiveFormsModule,
     HttpClientModule
     
- ],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
