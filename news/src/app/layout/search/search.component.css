@@ -1,0 +1,45 @@
+input{
+    border-radius: 10px;
+}
+
+button{
+    background-color: rgb(19, 19, 101);
+    width: 100%;
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: white;
+}
+.right-buttons{
+    width: 20%;
+    
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+}
+
+.bottom-row{
+    margin-left: 0.5rem;
+    margin-right: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+@media only screen and (max-width: 650px) {
+    .bottom-row{
+        display:block;
+        margin: 2%;
+        
+    }
+    .right-buttons{
+        width: 100%;
+    }
+    button{
+        margin-bottom: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}
+
