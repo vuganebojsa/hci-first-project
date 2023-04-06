@@ -11,7 +11,12 @@ import { Article } from 'src/app/models/article';
 export class ArticleComponent {
   @Input() article: Article;
 
-  constructor(private router: Router, private articleService: ArticleService){
+  constructor(private articleService: ArticleService, private router: Router){
+    
+  }
+  openArticle(article: Article){
+    this.articleService.setSelectedArticle(article);
+    this.router.navigate(['/article/' + article.title]);
     
   }
 }

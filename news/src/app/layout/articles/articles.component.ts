@@ -14,7 +14,7 @@ export class ArticlesComponent implements OnInit{
   articlesWithStatus: Articles;
   hasLoaded: boolean = false;
 
-  constructor(private articleService:ArticleService, private router: Router){
+  constructor(private articleService:ArticleService){
   }
   ngOnInit(): void {
     this.articleService.getTopArticles().subscribe({
@@ -30,10 +30,6 @@ export class ArticlesComponent implements OnInit{
       }
     })
   }
-  openArticle(article: Article){
-    this.articleService.setSelectedArticle(article);
-    this.router.navigate(['/article/' + article.title]);
-    
-  }
+  
 
 }

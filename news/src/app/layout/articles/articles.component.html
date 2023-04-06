@@ -1,7 +1,12 @@
-<section class="articles m-md-5 m-1 text-center" *ngIf="hasLoaded">
+<section class="articles text-center" *ngIf="hasLoaded">
     <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="articles-title my-2 other-color">TOP ARTICLES</h1>
+        </div>
+    </div>
+    <div class="row text">
         <div class="col-md-4 col-sm-6 col-12" *ngFor="let article of articles">
-            <app-article [article]="article" (click)="openArticle(article)"></app-article>
+            <app-article [article]="article"></app-article>
         </div>
 
     </div>

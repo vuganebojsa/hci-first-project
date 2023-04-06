@@ -9,11 +9,12 @@
 .brand-title {
     font-size: 1.5rem;
     margin: .5rem;
+    margin-left: 20px;
 }
 
 .navbar-links {
     height: 100%;
-    margin-right: 48vw;
+    margin-right: 47vw;
 }
 
 .navbar-links ul {
