@@ -28,6 +28,7 @@ export class ArticleComponent implements OnInit{
   }
   openArticle(article: Article){
     this.articleService.setSelectedArticle(article);
+    localStorage.setItem('article', JSON.stringify(article));
     this.router.navigate(['/article/' + article.title]);
     
   }

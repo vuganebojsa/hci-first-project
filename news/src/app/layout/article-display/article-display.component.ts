@@ -15,10 +15,8 @@ export class ArticleDisplayComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.articleService.selectedArticleValue$.subscribe((value) =>{
-      this.article = value;
-      this.hasLoaded = true;
-    });
+    this.article = JSON.parse(localStorage.getItem('article')) as Article;
+    this.hasLoaded = true;
     this.splitSource();
     
   }

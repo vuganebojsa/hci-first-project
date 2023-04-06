@@ -22,4 +22,8 @@ export class ArticleService {
   getTopArticles(): Observable<Articles>{
     return this.http.get<Articles>(this.base_url + 'top-headlines?country=us&' + this.api_key);
   }
+
+  getArticleByKeyword(keyword:string): Observable<Article>{
+    return this.http.get<Article>(this.base_url + 'q=' + keyword + '&' + this.api_key);
+  }
 }
