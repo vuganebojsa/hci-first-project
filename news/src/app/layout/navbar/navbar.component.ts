@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  toggle():void{
+    console.log('da');
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+    console.log(navbarLinks);
+    //toggleButton.addEventListener('click', () => {
+      navbarLinks.classList.toggle('active');
+    //});
+  }
 }
