@@ -1,0 +1,22 @@
+<div class="card my-2">
+    <img [src]="article.urlToImage"  alt="Cover Image" (click)="openArticle(article)" *ngIf="article.urlToImage !== null">
+    <img src="../../../assets/alt-image.jpg" alt="Cover Image" (click)="openArticle(article)" *ngIf="article.urlToImage === null">
+    <div class="overlay p-3">
+      <div class="overlay-content">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="title" (click)="openArticle(article)">{{article.title}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <a [href]="this.source" class="source" target="_blank">{{this.source}}</a>
+            </div>
+            <div class="col-6">
+                    <span class="publish-date">{{article.publishedAt | date: 'dd/MM/yyyy HH:mm'}}</span>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
