@@ -1,24 +1,10 @@
 input{
     border-radius: 10px;
-    
-
 }
-.myContainer{
-    height: auto;
-    
-}
-
-
-mat-form-field {
-    margin-top: 0.5%;
-    width: fit-content;
-}
-
 
 button{
-    background-color: rgb(22, 22, 147);
+    background-color: rgb(19, 19, 101);
     width: 100%;
-    
     display: inline-block;
     margin-right: 5%;
     color: white;
@@ -38,9 +24,7 @@ button{
     display: flex;
     justify-content: space-between;
 }
-.dd{
-    float: right;
-}
+
 
 @media only screen and (max-width: 650px) {
     .bottom-row{
