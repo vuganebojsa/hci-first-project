@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/article.service';
 import { Article, Articles } from 'src/app/models/article';
 
@@ -13,7 +14,7 @@ export class ArticlesComponent implements OnInit{
   articlesWithStatus: Articles;
   hasLoaded: boolean = false;
 
-  constructor(private articleService:ArticleService){
+  constructor(private articleService:ArticleService, private router: Router){
   }
   ngOnInit(): void {
     this.articleService.getTopArticles().subscribe({
@@ -28,6 +29,11 @@ export class ArticlesComponent implements OnInit{
         console.log(error);
       }
     })
+  }
+  openArticle(article: Article){
+    this.articleService.setSelectedArticle(article);
+    this.router.navigate(['/article/' + article.title]);
+    
   }
 
 }

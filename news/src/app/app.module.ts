@@ -7,13 +7,15 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HomeComponent } from './layout/home/home.component';
 import { ArticlesComponent } from './layout/articles/articles.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ArticleComponent } from './layout/article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

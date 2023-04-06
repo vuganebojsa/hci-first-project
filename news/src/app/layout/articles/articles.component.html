@@ -1,11 +1,9 @@
-<section class="articles m-md-5 m-1" *ngIf="hasLoaded">
-
+<section class="articles m-md-5 m-1 text-center" *ngIf="hasLoaded">
     <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-
+        <div class="col-md-4 col-sm-6 col-12" *ngFor="let article of articles">
+            <app-article [article]="article" (click)="openArticle(article)"></app-article>
         </div>
-        <div class="col-md-4 col-sm-6 col-12"></div>
-        <div class="col-md-4 col-sm-6 col-12"></div>
-    </div>
 
+    </div>
+    
 </section>
