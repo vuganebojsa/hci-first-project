@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ArticleDisplayComponent } from './layout/article-display/article-display.component';
+import { HomeComponent } from './layout/home/home.component';
+import { ArticlesComponent } from './layout/articles/articles.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ArticleComponent } from './layout/article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ArticleDisplayComponent
+    HomeComponent,
+    ArticlesComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
