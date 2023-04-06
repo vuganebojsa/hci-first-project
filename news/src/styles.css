@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+}
+
+.navbar-color{
+    background-color: #252C68;
+}
+
+.title-color{
+    color: #27076C;
+}
+
+.source-color{
+    color: #6F79CA;
+}
+
+.info-group-color{
+    background-color: #D4D4D4;
+}
+.other-color{
+    color: #323030;
+}
