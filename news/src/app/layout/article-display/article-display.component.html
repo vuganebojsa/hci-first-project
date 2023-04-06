@@ -1,32 +1,59 @@
-<section class="article other-color">
-  <div class="row my-3">
-    <div class="col-3">Bijuca->Golotinja</div>
-  </div>
+<section class="article other-color" *ngIf="hasLoaded">
   <div class="row my-4">
-    <div class="col-10 text-left title-color"><h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, perspiciatis.</h1></div>
+    <div class="col-10 text-left title-color"><h1>{{this.article.title}}</h1></div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="col-12 my-2">source: <a [href]="this.article.url" target="_blank">{{this.article.url}}</a></div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+
   <div class="row my-3">
-    <div class="col-11">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut cum deleniti dolor eaque
-      expedita facere illum in incidunt minus obcaecati quam qui quibusdam recusandae reprehenderit similique sint vero, vitae. </div>
+    <div class="col-11">{{this.article.description}} </div>
   </div>
+
   <div class="row my-3 info-group-color p-3 text-center">
 
     <div class="col-md-4 col-sm-6 col-12 my-2">
       <div class="row">
-        <div class="col-6"><img class="avatar-image rounded-circle img-fluid" src="../../../assets/person-avatar.png" alt="profilna"></div>
-        <div class="col-6">Marko Markovic</div>
+        <div class="col-12 my-3">
+            Author
+        </div>
+        <div class="col-12">
+  
+          <div class="row">
+            <div class="col-12">{{this.article.author}}</div>
+          </div>
+        </div>
       </div>
     </div>
+    
 
-    <div class="col-md-4 col-sm-6 col-12 my-2">Lorem ipsum dolor.</div>
-    <div class="col-md-4 col-sm-6 col-12 my-2">Lorem ipsum dolor.</div>
+    <div class="col-md-4 col-sm-6 col-12 my-2">
+      <div class="row">
+        <div class="col-12 my-3">Published At</div>
+        <div class="col-12">
+          {{this.article.publishedAt | date: 'dd/MM/yyyy HH:mm'}}
+        </div>
+      </div>
+      </div>
+
+
+    <div class="col-md-4 col-sm-6 col-12 my-2">
+      <div class="row">
+        <div class="col-12 my-3">Source</div>
+        <div class="col-12">
+          {{this.source}}
+        </div>
+      </div>
+      </div>
+
   </div>
   <div class="row my-3">
-    <div class="col-12"><img class="cover-image" src="../../../assets/putin.jpg" alt="putko"></div>
+    <div class="col-12"><img class="cover-image" [src]="this.article.urlToImage" alt="putko"></div>
   </div>
   <div class="row my-4">
-    <div class="col-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa debitis dolorem eos error
-      magni qui reiciendis. Accusamus doloribus et eum ex id, iure maiores porro possimus, quo reprehenderit temporibus
-      voluptatibus. Ad error ipsam itaque labore nulla quidem recusandae sunt voluptatibus! Amet architecto consectetur dignissimos eum hic illo possimus voluptates. Consequatur corporis eaque labore libero maxime natus porro quod reiciendis temporibus.</div>
+    <div class="col-12">{{this.article.content}} </div>
   </div>
 </section>

@@ -9,6 +9,11 @@ h1{
   text-align: left;
 }
 
+a{
+  text-decoration: none;
+  word-break: break-all;
+}
+
 
 .avatar-image{
   width: 50px;
