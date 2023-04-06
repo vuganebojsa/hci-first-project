@@ -8,6 +8,8 @@ import { SearchComponent } from './layout/search/search.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +22,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     AppRoutingModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatNativeDateModule 
-  ],
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,40 +1,64 @@
-<div class="info-group-color">
-    <input type="text" name="source" list="sourceName">
-    <datalist id="sourceName">
-        <option value="bbc">
-        <option value="putinOrg">
-    </datalist>
-    <input type="text" name="country" list="countryName">
-    <datalist id="countryName">
-        <option value="serbia">serbia</option>
-        <option value="russia">russia</option>
-        <option value="france">france</option>
-        <option value="greece">greece</option>
-    </datalist>
+<body>
 
-    <input type="text" name="category" list="categoryName">
-    <datalist id="categoryName">
-        <option value="sports">sports</option>
-        <option value="politics">politics</option>
-        <option value="music">music</option>
-        <option value="technology">technology</option>
-    </datalist>
+    <div class="info-group-color myContainer">
+        <form 
+             (ngSubmit)="search()">
+        <div class="row">
+            <div class="col">
+                <input type="text" name="source" list="sourceName" placeholder="source">
+                <datalist id="sourceName">
+                    <option value="bbc">
+                    <option value="putinOrg">
+                </datalist>
+            </div>
+            <div class="col">
+                <input type="text" name="country" list="countryName" placeholder="country">
+                <datalist id="countryName">
+                    <option value="serbia">serbia</option>
+                    <option value="russia">russia</option>
+                    <option value="france">france</option>
+                    <option value="greece">greece</option>
+                </datalist>
+            </div>
+            <div class="col-6">
+                <input type="text" name="category" list="categoryName" placeholder="category">
+                <datalist id="categoryName">
+                    <option value="sports">sports</option>
+                    <option value="politics">politics</option>
+                    <option value="music">music</option>
+                    <option value="technology">technology</option>
+                </datalist>
+            </div>
+            <div class="col">
+                <input type="text" name="keyword"  placeholder="keyword">
+            </div>
+            
 
-    <p>
-        <mat-form-field>
-            <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate placeholder="Start date">
-                <input matEndDate placeholder="End date">
-            </mat-date-range-input>
-            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-    </p>
+        </div>
+        
 
-    <p>blatruc</p>
-    <P>Reset</P>
-    <P>Search</P>
-    <p>Datepicker</p>
-</div>
+        <div class="bottom-row">
+        
+            <div>
+            <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate placeholder="Start date">
+                    <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+
+            <div class="right-buttons">
+                <button class="button">RESET</button>
+                <button class="button">SEARCH</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    </div>
+</body>
