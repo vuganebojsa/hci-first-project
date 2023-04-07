@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ArticleService } from 'src/app/article.service';
-import { Source, Sources } from 'src/app/models/article';
+import { Article, Source, Sources } from 'src/app/models/article';
 
 @Component({
   selector: 'app-search',
@@ -32,7 +32,7 @@ export class SearchComponent {
         this.sourcesWithStatus = result;
         this.sources = this.sourcesWithStatus.sources
         console.log(this.sources)
-        
+        this.resetArticles();
       },
       error:(error) =>{
         console.log(error);
@@ -40,16 +40,99 @@ export class SearchComponent {
     })
     //Vrati sve opcije moguce
   }
-
+  resetArticles():void{
+    this.articleService.setNewArticles(null);
+    this.chosenDateTime.value.end = null;
+    this.chosenDateTime.value.start = null;
+  }
   search(){
 
     this.hasSelected = true;
-    const values =  new Array();
-    if(this.country !== '') values.push('language:'+this.country);
+    let values:  Array<string>;
+    values = [];
+    if(this.country === null) this.country = '';
+    if(this.category === null) this.category = '';
+    if(this.title === null) this.title = '';
+    if(this.source === null) this.source = '';
+    this.country = this.country.trim();
+    this.category = this.category.trim();
+    this.source = this.source.trim();
+    this.title = this.title.trim();
+    if(this.country !== '') values.push('country='+this.country);
+    if(this.category !== '') values.push('category='+this.category);
+    if(this.source !== '') values.push('sources='+this.source);
+    if(this.title !== '') values.push('q='+this.title);
+    if(this.country !== '' && this.source !== ''){
+      alert('Mixing country and source is not possible. Try one without another.');
+      return;
+    }
+    if(this.category !== '' && this.source !== ''){
+      alert('Mixing category and source is not possible. Try one without another.');
+      return;
+    }
+    
+    const start = this.chosenDateTime.value.start;
+    const end = this.chosenDateTime.value.end;
+    if(start !== null)
+      start.setHours(0, 0, 0 , 0);
+    if(end !== null)
+      end.setHours(23, 59, 59, 59);
 
-    console.log(this.getStartDateValue());
-    console.log(this.getEndDateValue());
-    console.log(this.keyword);
+    this.articleService.getArticlesByParameters(values, 0, 100).subscribe({
+
+      next:(result) =>{
+        if(result.totalResults !== 0) {
+            console.log(result);
+            let actualResults: Array<Article>;
+            actualResults = [];
+            if((start != null && end != null)){
+              for(let article  of result.articles){
+                const publishDate = new Date(article.publishedAt); 
+                if(start <= publishDate  && publishDate <= end)
+                {
+                  actualResults.push(article);
+                }
+              }
+              this.articleService.setNewArticles(actualResults);
+
+              return;
+
+        
+            }else if(start === null && end !== null){
+              for(let article  of result.articles){
+                const publishDate = new Date(article.publishedAt); 
+                if(publishDate <= end)
+                {
+                  actualResults.push(article);
+                }
+              }
+              this.articleService.setNewArticles(actualResults);
+              return;
+
+        
+            }else if(start !== null && end === null){
+              for(let article  of result.articles){
+                const publishDate = new Date(article.publishedAt); 
+                if(start <= publishDate)
+                {
+                  actualResults.push(article);
+                }
+              }
+              this.articleService.setNewArticles(actualResults);
+              return;
+            }
+
+            this.articleService.setNewArticles(result.articles);
+
+        }else{
+          alert('No articles found by given criteria.');
+        }
+      },
+      error:(error) =>{
+        console.log(error);
+      }
+    })
+    
     
   }
 

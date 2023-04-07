@@ -18,7 +18,7 @@ export interface Articles{
 };
 
 export interface Source{
-    id?:number,
+    id?:string,
     name?:string
 }
 export interface Sources{

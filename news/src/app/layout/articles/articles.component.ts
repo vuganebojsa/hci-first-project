@@ -17,6 +17,13 @@ export class ArticlesComponent implements OnInit{
   constructor(private articleService:ArticleService){
   }
   ngOnInit(): void {
+    this.articleService.newArticlesValue$.subscribe((value) =>{
+      if(value !== null) this.articles = value;
+      else this.getTopArticles();
+    });
+    
+  }
+  getTopArticles():void{
     this.articleService.getTopArticles(0, 100).subscribe({
       next:(result) =>{
         console.log(result);
@@ -28,7 +35,7 @@ export class ArticlesComponent implements OnInit{
       error:(error) =>{
         console.log(error);
       }
-    })
+    });
   }
   
 
