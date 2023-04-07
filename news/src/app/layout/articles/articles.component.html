@@ -7,7 +7,11 @@
                 </div>
             </div>
             <div class="row text">
-                <div class="col-lg-4 col-md-6 col-12" *ngFor="let article of articles">
+                <div class="col-lg-4 col-md-6 col-12" 
+                    *ngFor="let article of articles | paginate : {
+                        itemsPerPage: selectedShowNumber,
+                        currentPage: page,
+                        totalItems: totalCount}; index as i">
                     <app-article [article]="article"></app-article>
                 </div>
         
@@ -25,5 +29,16 @@
 
     </div>
     
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                ></pagination-controls>
+                </div>
+        </div>
+    </div>
     
 </section>

@@ -13,9 +13,13 @@ export class ArticlesComponent implements OnInit{
   totalArticles:number;
   articlesWithStatus: Articles;
   hasLoaded: boolean = false;
-
+  page = 0;
+  pageSize = 10;
+  selectedShowNumber = 10;
+  totalCount = 0;
   constructor(private articleService:ArticleService){
   }
+
   ngOnInit(): void {
     this.articleService.newArticlesValue$.subscribe((value) =>{
       if(value !== null) this.articles = value;
@@ -24,11 +28,13 @@ export class ArticlesComponent implements OnInit{
     
   }
   getTopArticles():void{
-    this.articleService.getTopArticles(0, 100).subscribe({
+
+    this.articleService.getTopArticles(this.page, this.pageSize).subscribe({
       next:(result) =>{
         console.log(result);
         this.articlesWithStatus = result;
         this.totalArticles = this.articlesWithStatus.totalResults;
+        this.totalCount = this.totalArticles;
         this.articles = this.articlesWithStatus.articles;
         this.hasLoaded = true;
       },
@@ -37,6 +43,12 @@ export class ArticlesComponent implements OnInit{
       }
     });
   }
-  
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getTopArticles();
+  }
+
+
 
 }
