@@ -51,7 +51,9 @@
 
   </div>
   <div class="row my-3">
-    <div class="col-12"><img class="cover-image" [src]="this.article.urlToImage" alt="putko"></div>
+    <div class="col-12"><img class="cover-image" [src]="this.article.urlToImage" alt="putko" *ngIf="this.article.urlToImage !== null"></div>
+    <div class="col-12"><img class="cover-image" src="../../../assets/alt-image.jpg" alt="putko" *ngIf="this.article.urlToImage === null"></div>
+
   </div>
   <div class="row my-4">
     <div class="col-12">{{this.article.content}} </div>
