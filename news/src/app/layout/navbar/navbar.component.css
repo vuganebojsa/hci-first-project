@@ -11,6 +11,9 @@
     margin: .5rem;
     margin-left: 20px;
 }
+.brand-title:hover{
+    cursor: pointer;
+}
 
 .navbar-links {
     height: 100%;

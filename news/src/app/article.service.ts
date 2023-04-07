@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Article, Articles,  Sources } from './models/article';
 
 @Injectable({
@@ -9,6 +9,8 @@ import { Article, Articles,  Sources } from './models/article';
 export class ArticleService {
 
   api_key:string = "apiKey=88e547128e4b4e07b5f32f7946b4b666";
+  api_key_bogodan:string = "apiKey=c43115e4ce894552a0f1ea864f6f98ed";
+  api_key_kenjic:string = "apiKey=2a1d86c731ae4ec49e5c51cc81a49d58";
   base_url: string = "https://newsapi.org/v2/";
   
   base_url_everything: string = "https://newsapi.org/v2/everything?";
@@ -70,25 +72,44 @@ export class ArticleService {
     this.noNews$.next(noNews);
   }
 
+  private newArticles$ = new BehaviorSubject<Article[]>(null);
+  newArticlesValue$ = this.newArticles$.asObservable();
+
+  setNewArticles(newArticles: Article[]){
+    this.newArticles$.next(newArticles);
+  }
+
 
   constructor(private http: HttpClient) { }
 
-  getTopArticles(): Observable<Articles>{
-    return this.http.get<Articles>(this.base_url + 'top-headlines?country=us&' + this.api_key);
+  getTopArticles(page:number, pageSize:number): Observable<Articles>{
+    return this.http.get<Articles>(this.base_url + "top-headlines?country=us&page=" + page.toString() + "&pageSize=" + pageSize.toString() + "&" + this.api_key_bogodan);
   }
   getAllSources(): Observable<Sources>{
-    return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key);
+    return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key_bogodan);
   }
 
   getArticleByKeyword(keyword:string): Observable<Article>{
-    return this.http.get<Article>(this.base_url + 'q=' + keyword + '&' + this.api_key);
+    return this.http.get<Article>(this.base_url + 'q=' + keyword + '&' + this.api_key_bogodan);
   }
 
-  getArticlesByParameters(...params: string[]): Observable<Articles>{
+  getArticlesByParameters(params: string[], page:number, pageSize: number): Observable<Articles>{
     // domains:bbc, 
     // source cant go with category or country
-    let paramsValue = '';
-    return this.http.get<Articles>(this.base_url_everything + paramsValue + '&' + this.api_key);
+    let paramsValue: string = '';
+
+    for(let param of params){
+      paramsValue += param + '&';
+    }
+  
+    if(paramsValue === ''){
+      paramsValue += 'country=us&'
+    }
+
+    paramsValue += 'page=' + page.toString();
+    paramsValue += '&pageSize=' + pageSize.toString() + '&';
+
+    return this.http.get<Articles>(this.base_url + "top-headlines?" + paramsValue + this.api_key_bogodan);
   }
 
 
