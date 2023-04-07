@@ -44,11 +44,16 @@ export class SearchComponent {
   search(){
 
     this.hasSelected = true;
+    const values =  new Array();
+    if(this.country !== '') values.push('language:'+this.country);
+
     console.log(this.getStartDateValue());
     console.log(this.getEndDateValue());
     console.log(this.keyword);
     
   }
+
+
   getStartDateValue(){
     let start_year: string = this.chosenDateTime.value.start!.getFullYear().toString();
       let start_month: string = (this.chosenDateTime.value.start!.getMonth() + 1).toString();

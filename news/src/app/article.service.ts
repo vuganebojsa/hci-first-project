@@ -73,8 +73,8 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  getTopArticles(): Observable<Articles>{
-    return this.http.get<Articles>(this.base_url + 'top-headlines?country=us&' + this.api_key);
+  getTopArticles(page:number, pageSize:number): Observable<Articles>{
+    return this.http.get<Articles>(this.base_url + "top-headlines?country=us&page=" + page.toString() + "&pageSize=" + pageSize.toString() + "&" + this.api_key);
   }
   getAllSources(): Observable<Sources>{
     return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key);

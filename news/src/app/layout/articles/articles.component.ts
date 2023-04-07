@@ -17,7 +17,7 @@ export class ArticlesComponent implements OnInit{
   constructor(private articleService:ArticleService){
   }
   ngOnInit(): void {
-    this.articleService.getTopArticles().subscribe({
+    this.articleService.getTopArticles(0, 100).subscribe({
       next:(result) =>{
         console.log(result);
         this.articlesWithStatus = result;
