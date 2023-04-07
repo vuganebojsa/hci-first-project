@@ -14,28 +14,59 @@ export class ArticlesComponent implements OnInit{
   articlesWithStatus: Articles;
   hasLoaded: boolean = false;
   page = 0;
-  pageSize = 10;
-  selectedShowNumber = 10;
+  pageSize = 3;
+  showLoadMore = true;
+  selectedShowNumber = 3;
   totalCount = 0;
+  showArticles: Array<Article>;
   constructor(private articleService:ArticleService){
   }
 
   ngOnInit(): void {
+    this.page = 0;
+    this.showArticles = [];
     this.articleService.newArticlesValue$.subscribe((value) =>{
-      if(value !== null) this.articles = value;
-      else this.getTopArticles();
+      if(value !== null){ 
+        this.page = 0;
+        this.articles = value; 
+        this.showArticles = [];
+        this.showLoadMore = true;
+        this.totalCount = value.length;
+        if(this.totalCount < this.selectedShowNumber){
+          for(let i=this.page * this.selectedShowNumber;i<this.totalCount;i++){
+            this.showArticles.push(this.articles[i]);
+          }
+        }else{
+          for(let i=this.page * this.selectedShowNumber;i<this.page * this.selectedShowNumber + this.selectedShowNumber;i++){
+            this.showArticles.push(this.articles[i]);
+          }
+        }
+       
+      }
+      else if(value === null) {
+        this.getTopArticles();
+      }
+      
     });
     
   }
   getTopArticles():void{
 
-    this.articleService.getTopArticles(this.page, this.pageSize).subscribe({
+    this.articleService.getTopArticles(0, 100).subscribe({
       next:(result) =>{
-        console.log(result);
+        this.page = 0;
+        this.showArticles = [];
+        this.showLoadMore = true;
+        this.hasLoaded = false;
         this.articlesWithStatus = result;
         this.totalArticles = this.articlesWithStatus.totalResults;
         this.totalCount = this.totalArticles;
         this.articles = this.articlesWithStatus.articles;
+        for(let i=this.page * this.selectedShowNumber;i<this.page * this.selectedShowNumber + this.selectedShowNumber;i++){
+          if(this.showArticles.includes(this.articles[i]))
+            continue;
+          this.showArticles.push(this.articles[i]);
+        }
         this.hasLoaded = true;
       },
       error:(error) =>{
@@ -44,11 +75,21 @@ export class ArticlesComponent implements OnInit{
     });
   }
 
-  onTableDataChange(event: any) {
-    this.page = event;
-    this.getTopArticles();
+
+  loadMore():void{
+    this.page += 1;
+    this.totalCount = this.articles.length;
+
+    if(this.totalCount <= this.page * this.selectedShowNumber) {this.showLoadMore = false;return;}
+    if(this.totalCount < this.selectedShowNumber * (this.page + 1)){
+      for(let i=this.totalCount - (this.selectedShowNumber * (this.page + 1) - this.totalCount) + 1;i<this.totalCount;i++){
+        this.showArticles.push(this.articles[i]);
+      }
+    }else{
+      for(let i=this.page * this.selectedShowNumber;i<this.page * this.selectedShowNumber + this.selectedShowNumber;i++){
+        this.showArticles.push(this.articles[i]);
+      }
+    }
+    
   }
-
-
-
 }

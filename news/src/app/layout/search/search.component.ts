@@ -28,10 +28,8 @@ export class SearchComponent {
   ngOnInit(): void {
     this.articleService.getAllSources().subscribe({
       next:(result) =>{
-        console.log(result);
         this.sourcesWithStatus = result;
         this.sources = this.sourcesWithStatus.sources
-        console.log(this.sources)
         this.resetArticles();
       },
       error:(error) =>{
@@ -82,7 +80,6 @@ export class SearchComponent {
 
       next:(result) =>{
         if(result.totalResults !== 0) {
-            console.log(result);
             let actualResults: Array<Article>;
             actualResults = [];
             if((start != null && end != null)){
