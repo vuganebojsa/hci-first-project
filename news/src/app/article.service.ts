@@ -12,7 +12,7 @@ export class ArticleService {
   api_key_bogodan:string = "apiKey=c43115e4ce894552a0f1ea864f6f98ed";
   api_key_kenjic:string = "apiKey=2a1d86c731ae4ec49e5c51cc81a49d58";
   base_url: string = "https://newsapi.org/v2/";
-  
+
   base_url_everything: string = "https://newsapi.org/v2/everything?";
 
   private selectedArticle$ = new BehaviorSubject<Article>(null);
@@ -83,25 +83,25 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getTopArticles(page:number, pageSize:number): Observable<Articles>{
-    return this.http.get<Articles>(this.base_url + "top-headlines?country=us&page=" + page.toString() + "&pageSize=" + pageSize.toString() + "&" + this.api_key_bogodan);
+    return this.http.get<Articles>(this.base_url + "top-headlines?country=us&page=" + page.toString() + "&pageSize=" + pageSize.toString() + "&" + this.api_key_kenjic);
   }
   getAllSources(): Observable<Sources>{
-    return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key_bogodan);
+    return this.http.get<Sources>(this.base_url + 'top-headlines/sources?' + this.api_key_kenjic);
   }
 
   getArticleByKeyword(keyword:string): Observable<Article>{
-    return this.http.get<Article>(this.base_url + 'q=' + keyword + '&' + this.api_key_bogodan);
+    return this.http.get<Article>(this.base_url + 'q=' + keyword + '&' + this.api_key_kenjic);
   }
 
   getArticlesByParameters(params: string[], page:number, pageSize: number): Observable<Articles>{
-    // domains:bbc, 
+    // domains:bbc,
     // source cant go with category or country
     let paramsValue: string = '';
 
     for(let param of params){
       paramsValue += param + '&';
     }
-  
+
     if(paramsValue === ''){
       paramsValue += 'country=us&'
     }

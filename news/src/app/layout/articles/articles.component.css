@@ -5,9 +5,10 @@
 
 .load-more{
     padding: 10px 20px;
-    color: white;
     border-radius: 6px;
 
+    border-width: 0;
+    color: white;
 }
 .load-more:hover{
     color: wheat;

@@ -94,7 +94,7 @@
 
         <div class="row gx-0">
 
-            <div class="col-sm-6 col-12">
+            <div class="col-sm-6 col-12 wrapper">
               <mat-form-field class="row gx-0">
                   <mat-label>Enter a date range</mat-label>
                   <mat-date-range-input [formGroup]="chosenDateTime" [rangePicker]="picker">
@@ -106,9 +106,9 @@
               </mat-form-field>
             </div>
 
-            <div class="right-buttons col-sm-6 col-12">
-                <button class="button navbar-color" type="reset" (click)="resetArticles()">RESET</button>
-                <button class="button navbar-color" type="submit">SEARCH</button>
+            <div class="col-sm-6 col-12 wrapper row gx-0 pb-4">
+                <button class="" type="reset" (click)="resetArticles()">RESET</button>
+                <button class="" type="submit">SEARCH</button>
             </div>
         </div>
     </form>
