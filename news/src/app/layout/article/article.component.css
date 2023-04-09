@@ -9,17 +9,19 @@
     border-radius: 20px;
     height: 100%;
 }
-img:hover{
-    cursor: pointer;
 
+.card:hover{
+    cursor: pointer;
 }
+
 .title{
     text-align: left;
 }
 .title:hover{
     cursor:pointer;
 }
-img:hover + .overlay{
+
+.card:hover .overlay{
     background-color:rgba(0, 0, 0, 0.8);
 }
 
@@ -32,7 +34,7 @@ img:hover + .overlay{
     color: white;
 }
 .h4{
-    
+
     text-align: left;
     word-break: break-all;
 }

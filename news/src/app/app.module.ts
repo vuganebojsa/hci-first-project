@@ -16,6 +16,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { ArticlesComponent } from './layout/articles/articles.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleComponent } from './layout/article/article.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -27,19 +28,20 @@ import { ArticleComponent } from './layout/article/article.component';
     ArticlesComponent,
     ArticleComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPaginationModule
-    
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        MatButtonModule
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
