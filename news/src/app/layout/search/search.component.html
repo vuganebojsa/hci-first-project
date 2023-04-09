@@ -1,19 +1,19 @@
 
     <div class="info-group-color search-section">
-        <form 
+        <form
              (ngSubmit)="search()">
-        <div class="row">
-            <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
+        <div class="row gx-0">
+            <div class="col-md-3 col-sm-6 col-12 my-4 text-center">
                 <input [(ngModel)]="source" type="text" name="source"list="sourceName" placeholder="source" >
                 <datalist id="sourceName" >
                     <option *ngFor="let source of sources" value="{{source.id}}">{{source.name}}</option>
                 </datalist>
             </div>
-            
-            <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
+
+            <div class="col-md-3 col-sm-6 col-12 my-4 text-center">
                 <input [(ngModel)]="country" type="text" name="country" list="countryName" placeholder="country">
                 <datalist id="countryName">
-                    
+
                     <option value="ae">ae</option>
                     <option value="ar">ar</option>
                     <option value="at">at</option>
@@ -70,7 +70,7 @@
                     <option value="za">za</option>
                 </datalist>
             </div>
-            <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
+            <div class="col-md-3 col-sm-6 col-12 my-4 text-center">
                 <input [(ngModel)]="category" type="text" name="category" list="categoryName" placeholder="category">
                 <datalist id="categoryName">
                     <option value="sports">sports</option>
@@ -82,36 +82,36 @@
                     <option value="entertainment">entertainment</option>
                 </datalist>
             </div>
-            <div class="col-md-2 col-sm-5 col-12 my-4 mx-2">
+            <div class="col-md-3 col-sm-6 col-12 my-4 text-center">
                 <input [(ngModel)]="title" type="text" name="title" placeholder="title">
-                
+
             </div>
-            
-            
+
+
 
         </div>
-        
 
-        <div class="bottom-row">
-        
-            <div>
-            <mat-form-field>
-                <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input [formGroup]="chosenDateTime" [rangePicker]="picker">
-                    <input matStartDate  placeholder="Start date" formControlName="start">
-                    <input matEndDate  placeholder="End date" formControlName="end">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
-        </div>
 
-            <div class="right-buttons">
+        <div class="row gx-0">
+
+            <div class="col-sm-6 col-12">
+              <mat-form-field class="row gx-0">
+                  <mat-label>Enter a date range</mat-label>
+                  <mat-date-range-input [formGroup]="chosenDateTime" [rangePicker]="picker">
+                      <input matStartDate  placeholder="Start date" formControlName="start">
+                      <input matEndDate  placeholder="End date" formControlName="end">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+            </div>
+
+            <div class="right-buttons col-sm-6 col-12">
                 <button class="button navbar-color" type="reset" (click)="resetArticles()">RESET</button>
                 <button class="button navbar-color" type="submit">SEARCH</button>
             </div>
         </div>
     </form>
-    
+
 
     </div>
