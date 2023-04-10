@@ -14,9 +14,9 @@ export class ArticlesComponent implements OnInit{
   articlesWithStatus: Articles;
   hasLoaded: boolean = false;
   page = 0;
-  pageSize = 3;
+  pageSize = 6;
   showLoadMore = true;
-  selectedShowNumber = 3;
+  selectedShowNumber = 6;
   totalCount = 0;
   showArticles: Array<Article>;
   constructor(private articleService:ArticleService){

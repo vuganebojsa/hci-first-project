@@ -32,20 +32,18 @@
   justify-content: space-between;
 }
 
+
+.overflow::-webkit-scrollbar {
+    display: none;
+  }
+
 .overflow{
-  max-height: 75%;
-  overflow: auto;
+
+    overflow-y:scroll;
+    overflow-x:hidden;
+    max-height:75%;
 }
 
-.source{
-
-    /*font-size: 14px;*/
-    /*position: absolute;*/
-    /*bottom: 12px;*/
-    /*left: 10px;*/
-    /*text-decoration: none;*/
-    /*color: white;*/
-}
 .h4{
 
     text-align: left;
