@@ -43,11 +43,17 @@ button{
   border: 0;
   padding: 10px 20px;
   border-radius: 6px;
-
+  transition: background-color 0.2s ease-in-out;
 }
 
 button:hover{
-  color: wheat;
+  background-color: #6F79CA;
+
+}
+
+button:active {
+
+  transform: translateY(4px);
 }
 
 mat-button{

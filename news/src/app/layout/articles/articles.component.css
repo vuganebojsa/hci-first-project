@@ -9,7 +9,13 @@
 
     border-width: 0;
     color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.load-more:active {
+
+  transform: translateY(4px);
 }
 .load-more:hover{
-    color: wheat;
+  background-color: #6F79CA;
 }
