@@ -1,0 +1,35 @@
+<section class="articles text-center" *ngIf="hasLoaded">
+    <div *ngIf="articles !== undefined">
+        <div *ngIf="articles.length !== 0">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="articles-title my-2 other-color">TOP ARTICLES</h1>
+                </div>
+            </div>
+            <div class="row text">
+                <div class="col-lg-4 col-md-6 col-12" 
+                    *ngFor="let article of showArticles">
+                    <app-article [article]="article"></app-article>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <div *ngIf="articles === undefined || articles.length === 0">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger p-5" role="alert">
+                    No news have been found. Try again later.
+                  </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="row text-center" *ngIf="showLoadMore">
+        <div class="col-12">
+            <button class="load-more navbar-color m-3" type="button" (click)="loadMore()">Load More</button>
+        </div>
+    </div>
+    
+</section>

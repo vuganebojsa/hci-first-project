@@ -1,0 +1,21 @@
+.articles{
+    width: 85%;
+    margin:20px auto;
+}
+
+.load-more{
+    padding: 10px 20px;
+    border-radius: 6px;
+
+    border-width: 0;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.load-more:active {
+
+  transform: translateY(4px);
+}
+.load-more:hover{
+  background-color: #6F79CA;
+}
