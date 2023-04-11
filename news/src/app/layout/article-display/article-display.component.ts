@@ -18,7 +18,15 @@ export class ArticleDisplayComponent implements OnInit{
     this.article = JSON.parse(localStorage.getItem('article')) as Article;
     this.hasLoaded = true;
     this.splitSource();
+    this.splitContent();
 
+  }
+  splitContent(): void{
+    if(this.article.content === null || this.article.content === undefined) return;
+    const parts = this.article.content.split("[");
+    const result = parts[0];
+    this.article.content = result;
+  
   }
   splitSource(): void{
     if(this.article.url === null || this.article.url === undefined) return;
